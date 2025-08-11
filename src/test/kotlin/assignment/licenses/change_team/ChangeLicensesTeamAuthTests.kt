@@ -4,7 +4,7 @@ import assignment.ApiClients
 import assignment.assertGeneralErrorResponse
 import assignment.clients.AccountApiClient
 import assignment.customerCode
-import assignment.models.ChangeLicensesTeamRequest
+import assignment.models.ChangeLicensesTeamRequestBody
 import assignment.orgAdminApiKey
 import org.testng.annotations.Test
 import org.testng.asserts.SoftAssert
@@ -14,7 +14,7 @@ class ChangeLicensesTeamAuthTests : AbstractChangeLicensesTeamTests() {
     fun teamAdminIsUnableToTransferLicensesTest() {
         val licenseBefore = selectLicenseToTransfer(team2Id)
 
-        val requestBody = ChangeLicensesTeamRequest(
+        val requestBody = ChangeLicensesTeamRequestBody(
             licenseIds = listOf(licenseBefore.licenseId),
             targetTeamId = team1Id
         )
@@ -35,7 +35,7 @@ class ChangeLicensesTeamAuthTests : AbstractChangeLicensesTeamTests() {
     fun teamViewerIsUnableToTransferLicensesTest() {
         val licenseBefore = selectLicenseToTransfer(team2Id)
 
-        val requestBody = ChangeLicensesTeamRequest(
+        val requestBody = ChangeLicensesTeamRequestBody(
             licenseIds = listOf(licenseBefore.licenseId),
             targetTeamId = team1Id
         )
@@ -56,7 +56,7 @@ class ChangeLicensesTeamAuthTests : AbstractChangeLicensesTeamTests() {
     fun apiTokenRequiredForLicenseAssign() {
         val licenseBefore = selectLicenseToTransfer(team2Id)
 
-        val requestBody = ChangeLicensesTeamRequest(
+        val requestBody = ChangeLicensesTeamRequestBody(
             licenseIds = listOf(licenseBefore.licenseId),
             targetTeamId = team1Id
         )
@@ -80,7 +80,7 @@ class ChangeLicensesTeamAuthTests : AbstractChangeLicensesTeamTests() {
     fun customerCodeRequiredForLicenseAssign() {
         val licenseBefore = selectLicenseToTransfer(team2Id)
 
-        val requestBody = ChangeLicensesTeamRequest(
+        val requestBody = ChangeLicensesTeamRequestBody(
             licenseIds = listOf(licenseBefore.licenseId),
             targetTeamId = team1Id
         )

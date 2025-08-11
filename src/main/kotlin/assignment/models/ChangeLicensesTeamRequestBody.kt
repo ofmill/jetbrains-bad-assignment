@@ -1,6 +1,6 @@
 package assignment.models
 
-data class ChangeLicensesTeamRequest(
+data class ChangeLicensesTeamRequestBody(
     val licenseIds: List<String?>? = null,
     val targetTeamId: Int? = null
 )

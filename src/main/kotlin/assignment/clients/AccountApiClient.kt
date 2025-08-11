@@ -1,7 +1,7 @@
 package assignment.clients
 
 import assignment.helpers.allure.AllureReportHttpInterceptor
-import assignment.models.ChangeLicensesTeamRequest
+import assignment.models.ChangeLicensesTeamRequestBody
 import assignment.models.LicenseAssignRequestBody
 import assignment.models.LicenseResponse
 import okhttp3.OkHttpClient
@@ -18,7 +18,7 @@ interface AccountApiClient {
     fun assignLicense(@Body body: LicenseAssignRequestBody): Call<Any?>
 
     @POST("api/v1/customer/changeLicensesTeam")
-    fun changeLicensesTeam(@Body body: ChangeLicensesTeamRequest): Call<Any?>
+    fun changeLicensesTeam(@Body body: ChangeLicensesTeamRequestBody): Call<Any?>
 
     @GET("api/v1/customer/licenses")
     fun getLicenses(

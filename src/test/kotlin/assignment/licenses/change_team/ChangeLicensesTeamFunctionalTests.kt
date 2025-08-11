@@ -5,7 +5,7 @@ import assignment.assertGeneralErrorResponse
 import assignment.assertLicenseTransferredSuccessfully
 import assignment.helpers.accounts.*
 import assignment.helpers.allure.AllureReportHelper.step
-import assignment.models.ChangeLicensesTeamRequest
+import assignment.models.ChangeLicensesTeamRequestBody
 import assignment.models.Contact
 import assignment.models.LicenseAssignRequestBody
 import org.testng.annotations.Test
@@ -17,7 +17,7 @@ class ChangeLicensesTeamFunctionalTests : AbstractChangeLicensesTeamTests() {
     fun singleUnassignedLicenseCanBeTransferredTest() {
         val licenseBefore = selectLicenseToTransfer(team2Id)
 
-        val body = ChangeLicensesTeamRequest(
+        val body = ChangeLicensesTeamRequestBody(
             licenseIds = listOf(licenseBefore.licenseId),
             targetTeamId = team1Id
         )
@@ -54,7 +54,7 @@ class ChangeLicensesTeamFunctionalTests : AbstractChangeLicensesTeamTests() {
         val license1 = licenses[0]
         val license2 = licenses[1]
 
-        val body = ChangeLicensesTeamRequest(
+        val body = ChangeLicensesTeamRequestBody(
             licenseIds = listOf(license1.licenseId, license2.licenseId),
             targetTeamId = team1Id
         )
@@ -85,7 +85,7 @@ class ChangeLicensesTeamFunctionalTests : AbstractChangeLicensesTeamTests() {
     fun unableToTransferLicenseWithNoTeamSpecifiedTest() {
         val licenseBefore = selectLicenseToTransfer(team2Id)
 
-        val body = ChangeLicensesTeamRequest(
+        val body = ChangeLicensesTeamRequestBody(
             licenseIds = listOf(licenseBefore.licenseId),
         )
 
@@ -117,7 +117,7 @@ class ChangeLicensesTeamFunctionalTests : AbstractChangeLicensesTeamTests() {
                 byTeamId(team2Id)
             )
 
-        val body = ChangeLicensesTeamRequest(
+        val body = ChangeLicensesTeamRequestBody(
             licenseIds = listOf(license.licenseId),
             targetTeamId = team2Id
         )
@@ -161,7 +161,7 @@ class ChangeLicensesTeamFunctionalTests : AbstractChangeLicensesTeamTests() {
             throw AssertionError("Failed to get assigned license for test.")
         }
 
-        val transferRequestBody = ChangeLicensesTeamRequest(
+        val transferRequestBody = ChangeLicensesTeamRequestBody(
             licenseIds = listOf(license.licenseId),
             targetTeamId = team1Id
         )
@@ -191,7 +191,7 @@ class ChangeLicensesTeamFunctionalTests : AbstractChangeLicensesTeamTests() {
                 )
         }
 
-        val requestBody = ChangeLicensesTeamRequest(
+        val requestBody = ChangeLicensesTeamRequestBody(
             licenseIds = listOf(license.licenseId),
             targetTeamId = team1Id
         )
@@ -214,7 +214,7 @@ class ChangeLicensesTeamFunctionalTests : AbstractChangeLicensesTeamTests() {
     fun possibleToTransferActiveLicenseToServerTeamTest() {
         val license = selectLicenseToTransfer(team2Id)
 
-        val requestBody = ChangeLicensesTeamRequest(
+        val requestBody = ChangeLicensesTeamRequestBody(
             licenseIds = listOf(license.licenseId),
             targetTeamId = licenseServerTeamId
         )
@@ -241,7 +241,7 @@ class ChangeLicensesTeamFunctionalTests : AbstractChangeLicensesTeamTests() {
                 byTeamId(licenseServerTeamId)
             )
 
-        val requestBody = ChangeLicensesTeamRequest(
+        val requestBody = ChangeLicensesTeamRequestBody(
             licenseIds = listOf(license.licenseId),
             targetTeamId = team2Id
         )
@@ -273,7 +273,7 @@ class ChangeLicensesTeamFunctionalTests : AbstractChangeLicensesTeamTests() {
                 )
         }
 
-        val requestBody = ChangeLicensesTeamRequest(
+        val requestBody = ChangeLicensesTeamRequestBody(
             licenseIds = listOf(license1.licenseId, license2.licenseId),
             targetTeamId = licenseServerTeamId
         )
@@ -304,7 +304,7 @@ class ChangeLicensesTeamFunctionalTests : AbstractChangeLicensesTeamTests() {
     fun unableToTransferLicenseToNotExistingTeamTest() {
         val licenseBefore = selectLicenseToTransfer(team2Id)
 
-        val body = ChangeLicensesTeamRequest(
+        val body = ChangeLicensesTeamRequestBody(
             licenseIds = listOf(licenseBefore.licenseId),
             targetTeamId = Int.MAX_VALUE
         )
@@ -330,7 +330,7 @@ class ChangeLicensesTeamFunctionalTests : AbstractChangeLicensesTeamTests() {
 
     @Test
     fun unableToTransferNotExistingLicenseTest() {
-        val body = ChangeLicensesTeamRequest(
+        val body = ChangeLicensesTeamRequestBody(
             licenseIds = listOf(UUID.randomUUID().toString()),
             targetTeamId = team2Id
         )
