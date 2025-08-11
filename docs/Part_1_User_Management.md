@@ -48,6 +48,10 @@
 - TC-33. Team Viewer can not revoke assigned license
 - TC-34. Team Viewer can not purchase new licenses for company
 - TC-35. Team Viewer can purchase new licenses for personal use
+- TC-36. Team Administrator can create Invitation
+- TC-37. Team Administrator can invalidate Invitation
+- TC-38. Team Viewer can not create Invitation
+- TC-39. Team Viewer can not invalidate Invitation
 
 ## Bug Reports
 
